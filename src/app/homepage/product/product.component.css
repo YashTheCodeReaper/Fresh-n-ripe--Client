@@ -1,0 +1,183 @@
+.product-card {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  opacity: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.exotic-card {
+  opacity: 0;
+}
+
+.image-container {
+  width: 100%;
+  height: 35rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 2rem;
+  background: #fff;
+}
+
+.image-container p {
+  position: absolute;
+  display: inline-block;
+  padding: 0.3rem 0.5rem;
+  border-radius: 50px;
+  background: #7611d5;
+  color: #fff;
+  bottom: 2rem;
+  left: 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+img {
+  width: 40%;
+  cursor: pointer;
+}
+
+.price-flex {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.price-flex p:first-child {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #333;
+}
+
+.price-flex p:last-child {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #888;
+  text-decoration: line-through;
+}
+
+.discount-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: rgb(239, 0, 32);
+  font-size: 3.6rem;
+  z-index: 1;
+}
+
+.discount-badge p {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #555;
+}
+
+.cart-icon {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.added-cart {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 40%;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.added-cart h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #7611d5;
+}
+
+button {
+  display: inline-block;
+  padding: 1rem;
+  color: #fff;
+  background: #333;
+  border: none;
+  font-weight: 600;
+  font-size: 1.6rem;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 500px;
+}
+
+.description {
+  font-size: 1.2rem;
+  font-weight: 500;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: #3e3e3e;
+}
+
+@keyframes productCardAnimator {
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@media (max-width: 850px) {
+  .image-container {
+    height: 30rem;
+  }
+  .added-cart{
+    width: 40%;
+  }
+  .added-cart h1{
+    font-size: 1.4rem;
+  }
+  button {
+  padding: 0.5rem;
+  font-weight: 500;
+  font-size: 1.2rem;
+  border-radius: 500px;
+}
+}
+
+@media (max-width: 500px) {
+  .image-container {
+    height: 25rem;
+  }
+  .discount-badge {
+    color: rgb(239, 0, 32);
+    font-size: 3.2rem;
+    z-index: 1;
+  }
+  .discount-badge p {
+    font-size: 1rem;
+    font-weight: 800;
+  }
+}

@@ -1,0 +1,115 @@
+<div class="container">
+  <app-slider></app-slider>
+  <div class="featurettes-container" *ngIf="allFeaturedProducts">
+    <h1>Featured</h1>
+    <h2>Products</h2>
+    <div class="featurettes-grid">
+      <app-product
+        *ngFor="let featuredProduct of allFeaturedProducts; let i = index"
+        [product]="featuredProduct.product"
+        [i]="i"
+        [endIndex]="allFeaturedProducts.length"
+        [count]="featuredProduct.count"
+      ></app-product>
+    </div>
+  </div>
+</div>
+
+<div class="exotic-container exotic-fruits">
+  <button class="explore-button explore-button-fruits">Explore</button>
+  <div class="exotic-header-flex">
+    <h1 class="exotic-header-flex-header-fruits" style="--i: 1">EXOTIC</h1>
+    <h1 class="exotic-header-flex-header-fruits" style="--i: 2">FRUITS</h1>
+    <img
+      src="https://www.kindpng.com/picc/b/58-588285_lychee-png.png"
+      alt="exotic-bg-banner"
+    />
+  </div>
+  <div class="exotic-subheader-flex">
+    <div style="--i: 3" class="left-sub-header left-sub-header-fruits">
+      <div class="bar"></div>
+      <p>
+        Exotic fruits are fairly low in calories, which is very good but on the
+        other hand is rich in antioxidants and vitamins that are required for
+        your well-being. We have a wide variety of exotic fruits that you can't
+        even heard about!
+      </p>
+    </div>
+    <div style="--i: 4" class="right-sub-header right-sub-header-fruits">
+      <div class="bar-2"></div>
+      <h2>Lychee</h2>
+      <p>
+        THE exotic lychee seems to be the latest popular “superfood”, with sales
+        in one supermarket alone up by 150 per cent. Lychees offer 40 per cent
+        more vitamin C than an orange.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="exotic-container exotic-vegetables">
+  <button class="explore-button explore-button-vegies">Explore</button>
+  <div class="exotic-header-flex">
+    <h1 class="exotic-header-flex-header-veggies" style="--i: 1">EXOTIC</h1>
+    <h1 class="exotic-header-flex-header-veggies" style="--i: 2">VEGGIES</h1>
+    <img
+      src="https://www.kindpng.com/picc/b/268-2689195_turnip-png.png"
+      alt="exotic-bg-banner"
+    />
+  </div>
+  <div class="exotic-subheader-flex">
+    <div style="--i: 3" class="left-sub-header left-sub-header-veggies">
+      <div class="bar"></div>
+      <p>
+        The main advantage of having exotic veggies is that they are rich in
+        important nutrients and vitamins. Not only this, they contain high
+        density of carbohydrates and proteins that eliminate the chances of
+        cardiovascular and bone related problems.
+      </p>
+    </div>
+    <div style="--i: 4" class="right-sub-header right-sub-header-veggies">
+      <div class="bar-2"></div>
+      <h2>Kohlrabi</h2>
+      <p>
+        If you eat it raw, kohlrabi will have a taste similar to cauliflower or
+        broccoli. Cooking or roasting kohlrabi unlocks its sweetness, roasted
+        kohlrabi has a sweeter flavor which is similar to parsnips or apple
+        sauce.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="exotic-container organic-foods">
+  <button class="explore-button explore-button-organics">Explore</button>
+  <div class="exotic-header-flex">
+    <h1 class="exotic-header-flex-header-organics" style="--i: 1">ORGANIC</h1>
+    <h1 class="exotic-header-flex-header-organics" style="--i: 2">FOODS</h1>
+    <img
+      src="https://www.kindpng.com/picc/b/77-773608_organic-icon-png.png"
+      alt="exotic-bg-banner"
+    />
+  </div>
+  <div class="exotic-subheader-flex">
+    <div style="--i: 3" class="left-sub-header left-sub-header-organics">
+      <div class="bar"></div>
+      <p>
+        Not only does organic production help reduce public health risks,
+        mounting evidence shows that food grown organically are rich in
+        nutrients, such as Vitamin C, iron, magnesium, and phosphorus, with less
+        exposure to nitrates and pesticide residues.
+      </p>
+    </div>
+
+    <div style="--i: 4" class="right-sub-header right-sub-header-organics">
+      <div class="bar-2"></div>
+      <h2>Organics</h2>
+      <p>
+        Compared with conventionally grown produce, organically grown produce
+        has lower detectable levels of pesticide residue. Organic produce may
+        have residue because of pesticides approved for organic farming or
+        because of airborne pesticides from conventional farms.
+      </p>
+    </div>
+  </div>
+</div>

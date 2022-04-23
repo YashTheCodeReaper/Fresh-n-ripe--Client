@@ -1,0 +1,195 @@
+<div class="container">
+  <div class="top-flex">
+    <div class="title">
+      <h1>Checkout</h1>
+      <h2>details</h2>
+    </div>
+    <div class="static-flex">
+      <div class="contact-details">
+        <div class="step step-contact">
+          <div class="step-number">1</div>
+          <div class="user-data">
+            <h1>Contact Information:</h1>
+            <h2>{{ user.name }}</h2>
+            <h3>{{ user.email }}</h3>
+          </div>
+          <button
+            [ngStyle]="{
+              visibility: !showContactInformationForm ? 'visible' : 'hidden'
+            }"
+            (click)="goBackToContactInformationForm()"
+          >
+            EDIT
+          </button>
+        </div>
+        <div class="step step-delivery">
+          <div class="step-number">2</div>
+          <div class="user-data">
+            <h1>Delivery Information:</h1>
+            <h2>{{ user.doorno }}, {{ user.street }}, {{ user.locality }}</h2>
+            <h3>{{ user.city }}, {{ user.state }}-{{ user.pincode }}</h3>
+          </div>
+          <button
+            [ngStyle]="{
+              visibility: !showDeliveryInformationForm ? 'visible' : 'hidden'
+            }"
+            (click)="proceedFromContactInformationForm()"
+          >
+            EDIT
+          </button>
+        </div>
+        <div class="step step-shipment">
+          <div class="step-number">3</div>
+          <div class="user-data">
+            <h1>Shipment Information:</h1>
+            <h2>UPS Shipment Methods</h2>
+          </div>
+          <button
+            [ngStyle]="{
+              visibility: !showShipmentInformationForm ? 'hidden' : 'hidden'
+            }"
+          >
+            EDIT
+          </button>
+        </div>
+      </div>
+      <div class="cart-info">
+        <div class="flex-box">
+          <p>Grand MRP:</p>
+          <p>₹{{ totalMrp }}</p>
+        </div>
+        <div class="flex-box">
+          <p>Discount:</p>
+          <p>
+            -{{
+              !protectionRequired
+                ? (((totalMrp - totalAmount) / totalMrp) * 100).toFixed(0)
+                : (((totalMrp - totalAmount + 75) / totalMrp) * 100).toFixed(0)
+            }}%
+          </p>
+        </div>
+        <div class="flex-box">
+          <p>Shipping-protection:</p>
+          <p>₹{{ protectionRequired ? "75" : "0" }}</p>
+        </div>
+        <div class="flex-box">
+          <p>Sub-total:</p>
+          <p>₹{{ totalAmount }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="body-grid">
+    <div class="form-component">
+      <div
+        class="contact-information-form-grid"
+        *ngIf="showContactInformationForm"
+      >
+        <h1><span>1</span> Contact Information</h1>
+        <form>
+          <div class="input-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" [(ngModel)]="user.name" />
+          </div>
+          <div class="input-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" [(ngModel)]="user.email" />
+          </div>
+        </form>
+        <button (click)="proceedFromContactInformationForm()">Proceed</button>
+      </div>
+
+      <div
+        class="delivery-information-form-grid"
+        *ngIf="showDeliveryInformationForm"
+      >
+        <h1><span>2</span> Delivery Information</h1>
+        <form>
+          <div class="input-group">
+            <label for="doorno">Door/Appartment No:</label>
+            <input type="text" name="doorno" [(ngModel)]="user.doorno" />
+          </div>
+          <div class="input-group">
+            <label for="street">Street:</label>
+            <input type="text" name="street" [(ngModel)]="user.street" />
+          </div>
+          <div class="input-group">
+            <label for="locality">Locality:</label>
+            <input type="text" name="locality" [(ngModel)]="user.locality" />
+          </div>
+          <div class="input-group">
+            <label for="city">City:</label>
+            <input type="text" name="city" [(ngModel)]="user.city" />
+          </div>
+          <div class="input-group">
+            <label for="state">State:</label>
+            <input type="text" name="state" [(ngModel)]="user.state" />
+          </div>
+          <div class="input-group">
+            <label for="pincode">Pincode:</label>
+            <input type="text" name="pincode" [(ngModel)]="user.pincode" />
+          </div>
+          <div class="input-group">
+            <label for="phone">Phone:</label>
+            <input type="text" name="phone" [(ngModel)]="user.phone" />
+          </div>
+        </form>
+        <button (click)="proceedFromDeliveryInformationForm()">
+          Choose Shipment Method
+        </button>
+      </div>
+      <div
+        class="shipment-information-form-grid"
+        *ngIf="showShipmentInformationForm"
+      >
+        <h1><span>3</span> Shipment Information</h1>
+        <div class="shipment-flex">
+          <div class="ups-delivery-box">
+            <i
+              (click)="chooseShipment('upsground')"
+              class="icon ups upsground fa-solid fa-truck"
+            ></i>
+            <div class="delivery-flex">
+              <h1>UPS Ground</h1>
+              <h2>Estimated delivery time 7-10 days</h2>
+            </div>
+          </div>
+          <div class="ups-delivery-box">
+            <i
+              (click)="chooseShipment('upsair')"
+              class="icon ups upsair fa-solid fa-truck"
+            ></i>
+            <div class="delivery-flex">
+              <h1>UPS Next Day Air</h1>
+              <h2>Estimated delivery time 1-2 days</h2>
+            </div>
+          </div>
+          <div class="ups-delivery-box">
+            <i
+              (click)="chooseShipment('upsairpro')"
+              class="icon ups upsairpro fa-solid fa-truck"
+            ></i>
+            <div class="delivery-flex">
+              <h1>UPS Next Day Air Pro</h1>
+              <h2>Estimated delivery time 24 hrs</h2>
+            </div>
+          </div>
+        </div>
+        <button (click)="confirmOrder()" *ngIf="deliveryMethod != undefined">
+          Confirm Order
+        </button>
+        <span
+          style="
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: red;
+            align-self: center;
+          "
+          *ngIf="orderError"
+          >Order failed. Please try after some time :(</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

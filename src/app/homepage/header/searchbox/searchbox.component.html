@@ -1,0 +1,35 @@
+<div class="search-container">
+  <i class="icon search fa-solid fa-magnifying-glass"
+    ><input [(ngModel)]="searchString" (focusout)="onFocusOut()" (focus)="onFocus()" (input)="onSearchInput()" type="text"
+  /></i>
+  <div class="result-render-box" *ngIf="showRenderBox">
+    <p
+      style="
+        text-align: center;
+        width: 100%;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #8a8a8a;
+        padding: 1rem 2rem;
+      "
+      *ngIf="allProducts.length == 0"
+    >
+      {{
+        searchString != ""
+          ? "Can't find any products"
+          : "Please enter few characters"
+      }}
+    </p>
+    <ng-container *ngIf="allProducts.length > 0">
+      <div class="result-box" routerLink="/product/detail/{{product.id}}" *ngFor="let product of allProducts">
+        <div class="column">
+          <h1>{{ product.name }}</h1>
+          <div class="row">
+            <p>{{ product.category }}</p>
+            <p>{{ product.subcategory }}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

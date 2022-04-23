@@ -1,0 +1,176 @@
+<div class="product-grid" *ngIf="product">
+  <div class="image-container">
+    <img
+      src="{{ product[0].product.image }}"
+      alt="{{ product[0].product.name }}-image"
+    />
+  </div>
+  <div class="details-container">
+    <h5>
+      <span>{{ product[0].product.category }}</span> >
+      <span>{{ product[0].product.subcategory }}</span>
+    </h5>
+    <h1>{{ product[0].product.name }}</h1>
+    <p>{{ product[0].product.description }}</p>
+    <div class="review-container">
+      <label for="star1"
+        ><i
+          [ngStyle]="{
+            color: product[0].product.rating >= 2 ? '#000' : '#aaa'
+          }"
+          class="fa-solid fa-star"
+        ></i
+      ></label>
+      <input type="radio" id="star1" />
+      <label for="star2"
+        ><i
+          [ngStyle]="{
+            color: product[0].product.rating >= 4 ? '#000' : '#aaa'
+          }"
+          class="fa-solid fa-star"
+        ></i
+      ></label>
+      <input type="radio" id="star2" />
+      <label for="star3"
+        ><i
+          [ngStyle]="{
+            color: product[0].product.rating >= 6 ? '#000' : '#aaa'
+          }"
+          class="fa-solid fa-star"
+        ></i
+      ></label>
+      <input type="radio" id="star3" />
+      <label for="star4"
+        ><i
+          [ngStyle]="{
+            color: product[0].product.rating >= 8 ? '#000' : '#aaa'
+          }"
+          class="fa-solid fa-star"
+        ></i
+      ></label>
+      <input type="radio" id="star4" />
+      <label for="star5"
+        ><i
+          [ngStyle]="{ color: product[0].product.rating > 9 ? '#000' : '#aaa' }"
+          class="fa-solid fa-star"
+        ></i
+      ></label>
+      <input type="radio" id="star5" />
+    </div>
+    <div class="price-flex">
+      <p>
+        ₹{{ product[0].product.price }}
+        <span
+          >/ per
+          {{
+            product[0].product.quantity == "pe"
+              ? "piece"
+              : product[0].product.quantity == "dz"
+              ? "dozen"
+              : "kg"
+          }}</span
+        >
+      </p>
+      <p>₹{{ product[0].product.mrp }}</p>
+    </div>
+    <div class="button-flex" *ngIf="product[0].count > 0">
+      <button (click)="onItemRemove()">-</button>
+      <h3>{{ product[0].count.toString().padStart(2, "0") }}</h3>
+      <button (click)="onItemAdd()">+</button>
+    </div>
+    <button
+      class="custom-button"
+      (click)="onItemAdd()"
+      *ngIf="product[0].count == 0"
+    >
+      Add to cart
+    </button>
+  </div>
+</div>
+
+<div class="review-box">
+  <h1>Tell us something about this product</h1>
+  <h2>Your opinion matters most!</h2>
+  <p
+    style="font-size: 1.4rem; color: #777; font-weight: 400"
+    *ngIf="productReview.length == 0"
+  >
+    Be the first to review!
+  </p>
+  <div class="review-grid" *ngIf="productReview.length > 0">
+    <div class="review-flex" *ngFor="let review of productReview">
+      <div class="review-image-container">
+        <img
+          class="user-img"
+          src="{{ review.image }}"
+          alt="{{ review.name }}-profile"
+        />
+      </div>
+      <div class="review-details">
+        <h1>{{ review.name }}</h1>
+        <div class="review-container">
+          <label for="star1"
+            ><i
+              [ngStyle]="{
+                color: review.rating >= 2 ? '#000' : '#aaa'
+              }"
+              class="fa-solid fa-star"
+            ></i
+          ></label>
+          <input type="radio" id="star1" />
+          <label for="star2"
+            ><i
+              [ngStyle]="{
+                color: review.rating >= 4 ? '#000' : '#aaa'
+              }"
+              class="fa-solid fa-star"
+            ></i
+          ></label>
+          <input type="radio" id="star2" />
+          <label for="star3"
+            ><i
+              [ngStyle]="{
+                color: review.rating >= 6 ? '#000' : '#aaa'
+              }"
+              class="fa-solid fa-star"
+            ></i
+          ></label>
+          <input type="radio" id="star3" />
+          <label for="star4"
+            ><i
+              [ngStyle]="{
+                color: review.rating >= 8 ? '#000' : '#aaa'
+              }"
+              class="fa-solid fa-star"
+            ></i
+          ></label>
+          <input type="radio" id="star4" />
+          <label for="star5"
+            ><i
+              [ngStyle]="{ color: review.rating > 9 ? '#000' : '#aaa' }"
+              class="fa-solid fa-star"
+            ></i
+          ></label>
+          <input type="radio" id="star5" />
+        </div>
+        <p>"{{ review.description }}"</p>
+      </div>
+    </div>
+  </div>
+  <div class="review-form" *ngIf="showReviewForm">
+    <form [formGroup]="reviewForm">
+      <textarea
+        formControlName="description"
+        cols="60"
+        rows="5"
+        placeholder="Write something about the product!"
+      ></textarea>
+      <div class="rating-flex">
+        <label for="rating">Rate: </label>
+        <input formControlName="rating" type="number" min="1" max="10" />
+      </div>
+    </form>
+  </div>
+  <button (click)="reviewFunction()" class="custom-button">Leave a review</button>
+  <button (click)="reviewFunction()" *ngIf="showReviewForm" class="custom-button">Cancel</button>
+</div>

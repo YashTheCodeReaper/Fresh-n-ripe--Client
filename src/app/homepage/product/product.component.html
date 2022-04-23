@@ -1,0 +1,28 @@
+<div style="--i: {{ i }}" class="product-card">
+  <div class="discount-badge">
+    <i class="fa-solid fa-certificate"></i>
+    <p>
+      -{{ (((product.mrp - product.price) / product.mrp) * 100).toFixed(0) }}%
+    </p>
+  </div>
+  <div class="image-container">
+    <p>{{ product.subcategory }}</p>
+    <img routerLink="/product/detail/{{product.id}}" src="{{ product.image }}" alt="{{ product.name }} image" />
+    <i
+      (click)="onItemAdd()"
+      *ngIf="count == 0"
+      class="cart-icon fa-solid fa-cart-arrow-down"
+    ></i>
+    <div *ngIf="count > 0" class="added-cart">
+      <button (click)="onItemRemove()">-</button>
+      <h1>{{ count }}</h1>
+      <button (click)="onItemAdd()">+</button>
+    </div>
+  </div>
+  <h5>{{ product.name }}</h5>
+  <p class="description">{{product.description}}</p>
+  <div class="price-flex">
+    <p>₹{{ product.price }}</p>
+    <p>₹{{ product.mrp }}</p>
+  </div>
+</div>

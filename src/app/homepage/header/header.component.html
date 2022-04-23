@@ -1,0 +1,20 @@
+<header>
+  <div class="header-flex">
+    <app-menu></app-menu>
+    <img
+      routerLink="/"
+      src="../../../assets/Fresh n Ripe-logos_transparent.png"
+      alt="fresh n ripe logo"
+      class="logo"
+    />
+    <div class="nav-flex">
+      <div class="route-flex">
+        <p *ngIf="!isLogged" routerLink="/login">Login</p>
+        <p *ngIf="!isLogged" routerLink="/register">Signup</p>
+        <p *ngIf="isLogged" routerLink="/orders">Orders</p>
+      </div>
+      <app-searchbox></app-searchbox>
+      <app-cartmini></app-cartmini>
+    </div>
+  </div>
+</header>

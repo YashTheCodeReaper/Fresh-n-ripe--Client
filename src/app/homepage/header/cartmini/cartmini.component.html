@@ -1,0 +1,36 @@
+<div class="cart">
+  <div (click)="toggleCartContainer()" class="cart-icon">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span *ngIf="isLogged">₹{{ totalAmount }}</span>
+    <div *ngIf="totalAmount > 0" class="dot"></div>
+  </div>
+  <div
+    *ngIf="showCartContainer && totalAmount > 0"
+    class="cart-detail-container"
+  >
+    <div class="cart-detail-flex">
+      <h1>Your cart</h1>
+      <div class="products-flex" *ngIf="cartProducts">
+        <div class="product-grid" *ngFor="let product of cartProducts">
+          <div class="image-container">
+            <img src="{{ product.image }}" alt="{{ product.name }}-image" />
+          </div>
+          <div class="product-detail-flex">
+            <h5>₹{{ product.price }}</h5>
+            <p>{{ product.name }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="total-item-box">
+        <p>
+          Your have <span>{{ totalCartCount }}</span> items in your cart.
+        </p>
+      </div>
+      <h1 id="total-title">Total: ₹{{ totalAmount }}</h1>
+      <div class="button-flex">
+        <button (click)="hideContainer()">Continue</button>
+        <button (click)="hideContainer()" routerLink="/cart">Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>

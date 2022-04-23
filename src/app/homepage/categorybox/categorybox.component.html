@@ -1,0 +1,36 @@
+<div class="category-flex" *ngIf="allCategories.length > 0">
+  <div
+    class="category"
+    (mouseleave)="onCategoryEvent(category.name)"
+    (mouseenter)="onCategoryEvent(category.name)"
+    *ngFor="let category of allCategories; let i = index"
+  >
+    <div class="category-box">
+      <p style="--i:{{ i + 1 }}">
+        {{ category.name }}
+        <span *ngIf="category.subcategories.length > 0"
+          ><i class="fa-solid fa-angle-down"></i
+        ></span>
+      </p>
+      <div
+        class="dropdown dropdown-{{ category.name }} visible"
+        *ngIf="category.subcategories.length > 0"
+      >
+        <div
+          routerLink="/{{ category.name }}/{{ subcategory.name }}"
+          class="subcategory-flex"
+          style="--j:{{ j }}"
+          *ngFor="let subcategory of category.subcategories; let j = index"
+        >
+          <p>
+            {{ subcategory.name }}
+          </p>
+          <img
+            src="{{ subcategory.image }}"
+            alt="{{ subcategory.name }} photo"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

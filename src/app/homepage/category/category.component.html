@@ -1,0 +1,64 @@
+<div class="category-flex">
+  <div class="sub-category-column" *ngIf="categories">
+    <div
+      class="sub-category-column-item"
+      routerLink="/{{ category }}/all"
+      routerLinkActive="active-sub-category-column-item"
+    >
+      <h1>All {{ category }} category</h1>
+    </div>
+    <div
+      style="--i:{{ i + 1 }}"
+      class="sub-category-column-item"
+      routerLink="/{{ category }}/{{ categoryFetch.name }}"
+      routerLinkActive="active-sub-category-column-item"
+      *ngFor="let categoryFetch of categories.subcategories; let i = index"
+    >
+      <div>{{ categoryFetch.name }}</div>
+      <img src="{{ categoryFetch.image }}" alt="{{ categoryFetch.name }}" />
+    </div>
+  </div>
+  <div class="category-column">
+    <div class="header-flex">
+      <div class="header">
+        <h1>{{ category }}</h1>
+        <h2>{{ subCategory }}</h2>
+      </div>
+      <div class="filter-box">
+        <div class="price-filter">
+          <button class="sort-button" (click)="onPriceFilterClick()">
+            Price
+          </button>
+          <div *ngIf="showPriceFilterContainer" class="price-filter-container">
+            <h2><span>Price</span> Range</h2>
+            <h3>₹{{ minPrice }} - ₹{{ currPrice }}</h3>
+            <h4>Maximum Price: ₹{{ maxPrice }}</h4>
+            <input
+              class="price-range"
+              type="range"
+              name="price-range"
+              [min]="minPrice"
+              [max]="maxPrice"
+              [(ngModel)]="currPrice"
+            />
+            <button
+              (click)="onPriceFilterApplyClick()"
+              class="sort-button price-filter-button"
+            >
+              Apply Filter
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="products-grid" *ngIf="categoryProducts">
+      <app-product
+        *ngFor="let categoryProduct of categoryProducts; let i = index"
+        [product]="categoryProduct.product"
+        [i]="i"
+        [endIndex]="categoryProducts.length"
+        [count]="categoryProduct.count"
+      ></app-product>
+    </div>
+  </div>
+</div>

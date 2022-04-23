@@ -1,0 +1,42 @@
+<div class="container">
+  <p
+    style="
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #8a8a8a;
+    "
+    *ngIf="allOrders.length == 0"
+  >
+    You have not ordered anything yet!
+  </p>
+  <div class="order-container" *ngFor="let order of allOrders; let orderIndex = index">
+    <h1>
+      ORDER ID: <span>{{ order.id }}</span>
+    </h1>
+    <div class="products-grid" *ngIf="order.cart">
+      <ng-container *ngFor="let cartItem of order.cart; let i = index">
+        <div style="--i:{{i}}" class="product-box" *ngIf="cartItem.count > 0 && cartItem.product">
+          <div class="image-container">
+            <img
+              src="{{ cartItem.product.image }}"
+              alt="{{ cartItem.product.name }}-image"
+            />
+          </div>
+          <p>{{cartItem.product.name}}</p>
+          <div class="info">
+          <p>
+            {{ cartItem.count }} {{cartItem.product.quantity}} -
+            <span>₹{{ cartItem.count * cartItem.product.price }}</span>
+          </p>
+          <p>₹{{cartItem.product.price}} per {{cartItem.product.quantity}}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="details">
+      <h2>Sub-total: ₹{{totalAmount}}</h2>
+      <button (click)="onDeleteOrder(order.id)">Cancel order</button>
+    </div>
+  </div>
+</div>

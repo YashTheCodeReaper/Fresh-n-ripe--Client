@@ -1,0 +1,356 @@
+.slider-box {
+  max-width: 80%;
+  height: 30rem;
+  margin: 2rem auto;
+  border-radius: 4rem;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #ddd;
+}
+
+.slider-box-component {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 800ms ease-in-out;
+}
+
+.slider-image {
+  width: 100%;
+  background-position: center;
+}
+
+.slide-detail {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.slide-detail:first-child {
+  animation: sliderHeadingAnimator ease-in-out 700ms;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+h1 {
+  font-size: 3.6rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+
+.card-container {
+  max-width: 80%;
+  margin: 3rem auto;
+  height: 22rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 5rem;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #d6d6d6;
+  overflow: hidden;
+  border-radius: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5rem;
+  padding: 4rem;
+  opacity: 0;
+  animation: cardAnimator ease-in-out 600ms;
+  animation-fill-mode: forwards;
+  animation-delay: calc(0.08s * var(--i));
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e2e2;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+}
+
+.header h1 {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 2.2rem;
+}
+
+.header h1::before {
+  content: "";
+  width: 100%;
+  height: 50%;
+  background: rgb(254, 206, 214);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -9;
+}
+
+.card p {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.icon-container {
+  position: absolute;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  height: 7rem;
+  width: 7rem;
+  background: #f5f4f4;
+  border-bottom-left-radius: 3rem;
+  overflow: hidden;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+@keyframes sliderHeadingAnimator {
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes cardAnimator {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@media (max-width: 1190px) {
+  .slider-box {
+    max-width: 70%;
+    height: 25rem;
+    margin: 5rem auto;
+  }
+  .header h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 1130px) {
+  .slider-box {
+    max-width: 90%;
+    height: 30rem;
+    margin: 2rem auto;
+  }
+}
+
+@media (max-width: 1060px) {
+  .slider-box {
+    max-width: 80%;
+    height: 25rem;
+    margin: 2rem auto;
+  }
+  .header h1 {
+    font-size: 1.6rem;
+  }
+  .card p {
+    font-size: 1.4rem;
+  }
+  .card-container {
+    height: 18rem;
+  }
+  .icon-container {
+    height: 5rem;
+    width: 5rem;
+  }
+}
+
+@media (max-width: 990px) {
+  .slider-box {
+    max-width: 90%;
+  }
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  .card {
+    padding: 2rem;
+  }
+  .card p {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 880px) {
+  .slider-box {
+    max-width: 80%;
+    height: 20rem;
+    margin: 5rem auto;
+  }
+  h1 {
+    font-size: 2.8rem;
+  }
+  .icon {
+    font-size: 1.6rem;
+  }
+  .icon-container {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+  .card p {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 780px) {
+  .slider-box {
+    max-width: 90%;
+    height: 20rem;
+    border-radius: 2rem;
+    margin: 5rem auto;
+  }
+  .card-container {
+    max-width: 90%;
+    margin: 5rem auto;
+    column-gap: 2rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .slider-box {
+    max-width: 90%;
+    height: 18rem;
+  }
+}
+
+@media (max-width: 740px) {
+  .slider-box {
+    max-width: 90%;
+    height: 16rem;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+  .icon {
+    font-size: 1.5rem;
+  }
+  .icon-container {
+    height: 4rem;
+    width: 4rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  .card p {
+    font-size: 1.2rem;
+  }
+  .card {
+    border-radius: 1rem;
+    gap: 3rem;
+    padding: 2rem;
+  }
+  .card-container {
+    margin: 5rem auto;
+    column-gap: 2rem;
+    height: 15rem;
+  }
+  .header h1 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .slider-box {
+    max-width: 90%;
+    height: 15rem;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  .icon {
+    font-size: 1.3rem;
+  }
+  .icon-container {
+    height: 2rem;
+    width: 2rem;
+    border-bottom-left-radius: 1rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  .card p {
+    font-size: 1rem;
+  }
+  .card {
+    border-radius: 1rem;
+    gap: 2rem;
+    padding: 1rem;
+  }
+  .card-container {
+    margin: 5rem auto;
+    column-gap: 2rem;
+    height: 15rem;
+  }
+  .header h1 {
+    font-size: 1.23rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .slider-box {
+    max-width: 90%;
+    height: 13rem;
+  }
+  .icon {
+    font-size: 1rem;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  .card-container {
+    height: 12rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-box {
+    max-width: 95%;
+    height: 12rem;
+  }
+  .header h1 {
+    font-size: 1rem;
+  }
+}

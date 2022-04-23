@@ -1,0 +1,53 @@
+<div class="container">
+  <img
+    class="logo"
+    src="../../assets/Fresh n Ripe-logos_transparent.png"
+    alt="logo"
+  />
+  <div class="login-container">
+    <div class="image-container">
+      <img src="../../assets/registerbg.jpg" alt="logincover" />
+    </div>
+    <div class="login-form">
+      <div class="title">
+        <h1>Sign in</h1>
+        <p>Continue your journey with us!</p>
+      </div>
+      <span
+        style="font-size: 1.2rem; font-weight: 500; color: red"
+        *ngIf="formInvalid"
+        >Can't find user / Internal server error! :(</span
+      >
+      <form [formGroup]="userLoginForm">
+        <div class="input-field">
+          <label for="email">Email ID:</label>
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="example@email.com"
+          />
+        </div>
+        <div class="input-field">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            formControlName="password"
+            minlength="8"
+            maxlength="8"
+            placeholder="8 Character Password"
+          />
+        </div>
+        <button (click)="onLogin()" class="login-button" type="button">
+          Login
+        </button>
+        <button (click)="onCancelLogin()" class="cancel-button" type="button">
+          Never Mind
+        </button>
+      </form>
+      <p class="toRegister">
+        Dont't have an account?...Then
+        <span routerLink="/register">Sign up here!</span>
+      </p>
+    </div>
+  </div>
+</div>
